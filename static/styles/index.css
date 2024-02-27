@@ -1,0 +1,27 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+#blocklyDiv {
+    height: 480px;
+    width: 100%;
+}
+#codeGenerator {
+    height: 480px;
+    width: 100%;
+}
+
+#codeBox {
+    height: 227px;
+    width: 100%;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+#outputBox {
+    height: 227px;
+    width: 100%;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
