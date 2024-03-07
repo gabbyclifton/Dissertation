@@ -18,6 +18,7 @@
 </head>
 <body>
     <h1>*Cool App Name*</h1>
+    
     <button id="createVariableBtn">Create Variable</button>
     <div class="grid-container">
         <div class="grid-child purple">
@@ -44,5 +45,24 @@
             </div>
         </div>
     </div> 
+
+    <form id="myForm" action="/runCode" method="post">
+        <label for="code"></label>
+        <!--<input type="text" id="code" name="code"><br><br>-->
+        <input type='hidden' id= 'code' name='code' value='' />
+    </form>
+    <button onclick="mySubmit()">Submit</button>
+    <script> 
+        function mySubmit() {
+           //pythonCode = "import matplotlib.pyplot as plt\nfig, ax = plt.subplots()\nyear_2 = [2016, 2017, 2018, 2019, 2020, 2021]\npopulation_2 = [43, 43, 44, 44, 45, 45]\nplt.plot(year_2, population_2)\nplt.show()\nprint('Python script in pyscript end here ')";
+           //pythonCode = "import pandas as pd\nfrom pyodide.http import open_url\nfrom pyscript import display\nurl='https://raw.githubusercontent.com/datasets/airport-codes/master/data/airport-codes.csv'\ndf = pd.read_csv(open_url(url))\ndisplay(df)";
+           //code = "print('Hello world')"
+           //pythonCode = "from pyscript import display\nmessage="+code+"\ndisplay(message)"
+           pythonCode = document.getElementById('pythonCode').innerText;
+           document.getElementById('code').value = pythonCode;
+           document.getElementById("myForm").submit();
+         }
+      </script>
+    
 </body>
 </html>

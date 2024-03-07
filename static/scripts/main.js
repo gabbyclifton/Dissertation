@@ -261,6 +261,73 @@ Blockly.defineBlocksWithJsonArray([
     "colour": 120,
     "tooltip": "",
     "helpUrl": ""
+  },
+  {
+    "type": "import_pandas",
+    "message0": "import pandas as pd",
+    "nextStatement": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "import_data",
+    "message0": "pd.read_csv (%1)",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "NAME"
+      }
+    ],
+    "inputsInline": true,
+    "output": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "dataset",
+    "message0": "dataset",
+    "output": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "df_head",
+    "message0": "%1 .head (%2)",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "DF"
+      },
+      {
+        "type": "field_number",
+        "name": "NUM",
+        "value": 0
+      }
+    ],
+    "inputsInline": true,
+    "output": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "display",
+    "message0": "display ( %1 )",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "NAME"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
   }
 ]);
 
@@ -304,6 +371,36 @@ python.pythonGenerator.forBlock['range'] = function(block, generator) {
   var value_high = generator.valueToCode(block, 'HIGH', python.Order.ATOMIC);
   var code = 'range('+value_low+", "+value_high+")";
   return [code, python.Order.ATOMIC];
+};
+
+python.pythonGenerator.forBlock['import_pandas'] = function(block, generator) {
+  var code = 'import pandas as pd\nfrom pyodide.http import open_url\nfrom pyscript import display\n';
+  return code;
+};
+
+python.pythonGenerator.forBlock['import_data'] = function(block, generator) {
+  var value_name = generator.valueToCode(block, 'NAME', python.Order.ATOMIC);
+  // TODO: Assemble python into code variable.
+  var code = 'pd.read_csv(open_url('+value_name+'))';
+  return [code, python.Order.ATOMIC];
+};
+
+python.pythonGenerator.forBlock['dataset'] = function(block, generator) {
+  var code = "'https://raw.githubusercontent.com/datasets/airport-codes/master/data/airport-codes.csv'";
+  return [code, python.Order.ATOMIC];
+};
+
+python.pythonGenerator.forBlock['df_head'] = function(block, generator) {
+  var value_df = generator.valueToCode(block, 'DF', python.Order.ATOMIC);
+  var number_num = block.getFieldValue('NUM');
+  var code = value_df+'.head('+number_num+')';
+  return [code, python.Order.ATOMIC];
+};
+
+python.pythonGenerator.forBlock['display'] = function(block, generator) {
+  var value_name = generator.valueToCode(block, 'NAME', python.Order.ATOMIC);
+  var code = ("display("+value_name+")\n");
+  return code;
 };
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -373,6 +470,17 @@ document.addEventListener('DOMContentLoaded', function () {
             {"kind": "block", 'type': 'range'}
           ]
         },
+        {
+          "kind": "category",
+          "name": "Pandas",
+          "contents": [
+            {"kind": "block", 'type': 'import_pandas'},
+            {"kind": "block", 'type': 'import_data'},
+            {"kind": "block", 'type': 'dataset'},
+            {"kind": "block", 'type': 'df_head'},
+            {"kind": "block", 'type': 'display'}
+          ]
+        },
       ]
     };
 
@@ -396,7 +504,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('pythonCode').textContent = pythonCode;
 
   });
-
 
   function outf(text) { 
     var mypre = document.getElementById("codeOutput"); 
@@ -427,3 +534,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 });
+
+
+    

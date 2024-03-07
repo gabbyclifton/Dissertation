@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <title>PyScript Tag Create Example</title>
+  <link rel="stylesheet" href="https://pyscript.net/releases/2024.2.1/core.css">
+  <script type="module" src="https://pyscript.net/releases/2024.2.1/core.js"></script>
+
+</head>
+ 
+<body>
+<script>
+// Global variable to store the py-script DIV
+var py_div;
+ 
+// Create a DIV store store Python program print output
+var py_output = document.createElement("div");
+py_output.id = "myPyScriptOutput";
+document.body.appendChild(py_output);
+ 
+function run_python(py_code) {
+        // remove the previous script tag
+        if (py_div) {
+                py_div.remove();
+        }
+ 
+        // Wrap the Python code (py_code) with a PyScript tag
+        // py_div.evaluate() will run the code within the <py-script> tag
+        let html_tag = `
+        <py-script config="{{ url_for('static', filename='scripts/pyscript.toml') }}">
+        ${py_code}
+        </py-script>
+        `;
+ 
+        // Create the DIV to attach the py-script tag
+        let div = document.createElement("div");
+        div.innerHTML = html_tag;
+ 
+        py_div = div.firstElementChild;
+        document.body.appendChild(py_div);
+ 
+        try {
+                // This will run the Python interpreter
+                // for the code loaded into py_div
+                py_div.evaluate();
+        } catch (error) {
+                console.error("Python error:");
+                console.error(error);
+        }
+}
+ 
+// pycode contains the Python program
+var pycode = `
+{{data.code}}
+`;
+
+//TEST STRING
+//import matplotlib.pyplot as plt\nfig, ax = plt.subplots()\nyear_2 = [2016, 2017, 2018, 2019, 2020, 2021]\npopulation_2 = [43, 43, 44, 44, 45, 45]\nplt.plot(year_2, population_2)\nplt.show()\nprint('Python script in pyscript end here ')
+
+// Load the code into a py-script tag and then execute
+run_python(pycode);
+</script>
+
+</body>
+</html>
+
+
