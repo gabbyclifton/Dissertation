@@ -1,2 +1,2 @@
-name = "Matplotlib"
-packages = ["matplotlib", "pandas"]
+name = "Main"
+packages = ["matplotlib", "pandas", "seaborn"]

@@ -56,8 +56,7 @@
         function mySubmit() {
            //pythonCode = "import matplotlib.pyplot as plt\nfig, ax = plt.subplots()\nyear_2 = [2016, 2017, 2018, 2019, 2020, 2021]\npopulation_2 = [43, 43, 44, 44, 45, 45]\nplt.plot(year_2, population_2)\nplt.show()\nprint('Python script in pyscript end here ')";
            //pythonCode = "import pandas as pd\nfrom pyodide.http import open_url\nfrom pyscript import display\nurl='https://raw.githubusercontent.com/datasets/airport-codes/master/data/airport-codes.csv'\ndf = pd.read_csv(open_url(url))\ndisplay(df)";
-           //code = "print('Hello world')"
-           //pythonCode = "from pyscript import display\nmessage="+code+"\ndisplay(message)"
+           //pythonCode = "import pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nfrom pyscript import display\nfrom pyodide.http import open_url\nurl='https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv'\ntips = (pd.read_csv(open_url(url))).head()\nax = sns.countplot(data=tips,x='iso_country')\nax.set_title('Airports')\nax.set_xlabel('Countries')\nax.set_ylabel('Frequency')\nplt.show()"
            pythonCode = document.getElementById('pythonCode').innerText;
            document.getElementById('code').value = pythonCode;
            document.getElementById("myForm").submit();

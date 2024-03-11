@@ -264,7 +264,7 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     "type": "import_pandas",
-    "message0": "import pandas as pd",
+    "message0": "import pandas libraries",
     "nextStatement": null,
     "colour": 230,
     "tooltip": "",
@@ -328,6 +328,238 @@ Blockly.defineBlocksWithJsonArray([
     "colour": 230,
     "tooltip": "",
     "helpUrl": ""
+  },
+  {
+    "type": "import_seaborn",
+    "message0": "import seaborn libraries",
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 290,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "set_title",
+    "message0": "%1 .set_title(%2)",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "GRAPH"
+      },
+      {
+        "type": "field_input",
+        "name": "TITLE",
+        "text": "Title"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 290,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "set_xlabel",
+    "message0": "%1 .set_xlabel(%2)",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "GRAPH"
+      },
+      {
+        "type": "field_input",
+        "name": "LABEL",
+        "text": "X-axis"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 290,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "set_ylabel",
+    "message0": "%1 .set_ylabel(%2)",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "GRAPH"
+      },
+      {
+        "type": "field_input",
+        "name": "LABEL",
+        "text": "Y-axis"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 290,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "scatterplot",
+    "message0": "sns.scatterplot ( %1 , x = ' %2 %3 ', y = ' %4')",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "DATA"
+      },
+      {
+        "type": "field_input",
+        "name": "XAXIS",
+        "text": "total_bill"
+      },
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "field_input",
+        "name": "YAXIS",
+        "text": "tip"
+      }
+    ],
+    "inputsInline": true,
+    "output": null,
+    "colour": 290,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "histplot",
+    "message0": "sns.histplot ( %1 , x = ' %2 %3 ', hue = ' %4')",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "DATA"
+      },
+      {
+        "type": "field_input",
+        "name": "XAXIS",
+        "text": "total_bill"
+      },
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "field_input",
+        "name": "HUE",
+        "text": "sex"
+      }
+    ],
+    "inputsInline": true,
+    "output": null,
+    "colour": 290,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "countplot",
+    "message0": "sns.countplot ( %1 , x = '%2')",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "DATA"
+      },
+      {
+        "type": "field_input",
+        "name": "XAXIS",
+        "text": "day"
+      }
+    ],
+    "inputsInline": true,
+    "output": null,
+    "colour": 290,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "lineplot",
+    "message0": "sns.lineplot ( %1 , x = ' %2 %3 ', y = ' %4')",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "DATA"
+      },
+      {
+        "type": "field_input",
+        "name": "XAXIS",
+        "text": "total_bill"
+      },
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "field_input",
+        "name": "YAXIS",
+        "text": "tip"
+      }
+    ],
+    "inputsInline": true,
+    "output": null,
+    "colour": 290,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "regplot",
+    "message0": "sns.regplot ( %1 , x = ' %2 %3 ', y = ' %4')",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "DATA"
+      },
+      {
+        "type": "field_input",
+        "name": "XAXIS",
+        "text": "total_bill"
+      },
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "field_input",
+        "name": "YAXIS",
+        "text": "tip"
+      }
+    ],
+    "inputsInline": true,
+    "output": null,
+    "colour": 290,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "pairplot",
+    "message0": "sns.pairplot (%1)",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "DATA"
+      }
+    ],
+    "inputsInline": true,
+    "output": null,
+    "colour": 290,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "plot",
+    "message0": "plt.show() %1",
+    "args0": [
+      {
+        "type": "input_end_row"
+      }
+    ],
+    "previousStatement": null,
+    "colour": 290,
+    "tooltip": "",
+    "helpUrl": ""
   }
 ]);
 
@@ -386,7 +618,7 @@ python.pythonGenerator.forBlock['import_data'] = function(block, generator) {
 };
 
 python.pythonGenerator.forBlock['dataset'] = function(block, generator) {
-  var code = "'https://raw.githubusercontent.com/datasets/airport-codes/master/data/airport-codes.csv'";
+  var code = "'https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv'";
   return [code, python.Order.ATOMIC];
 };
 
@@ -400,6 +632,82 @@ python.pythonGenerator.forBlock['df_head'] = function(block, generator) {
 python.pythonGenerator.forBlock['display'] = function(block, generator) {
   var value_name = generator.valueToCode(block, 'NAME', python.Order.ATOMIC);
   var code = ("display("+value_name+")\n");
+  return code;
+};
+
+python.pythonGenerator.forBlock['import_seaborn'] = function(block, generator) {
+  var code = 'import seaborn as sns\nimport matplotlib.pyplot as plt\n';
+  return code;
+};
+
+python.pythonGenerator.forBlock['set_title'] = function(block, generator) {
+  var value_graph = generator.valueToCode(block, 'GRAPH', python.Order.ATOMIC);
+  var text_title = block.getFieldValue('TITLE');
+  var code = value_graph+".set_title('"+text_title+"')\n";
+  return code;
+};
+
+python.pythonGenerator.forBlock['set_xlabel'] = function(block, generator) {
+  var value_graph = generator.valueToCode(block, 'GRAPH', python.Order.ATOMIC);
+  var text_label = block.getFieldValue('LABEL');
+  var code = value_graph+".set_xlabel('"+text_label+"')\n";
+  return code;
+};
+
+python.pythonGenerator.forBlock['set_ylabel'] = function(block, generator) {
+  var value_graph = generator.valueToCode(block, 'GRAPH', python.Order.ATOMIC);
+  var text_label = block.getFieldValue('LABEL');
+  var code = value_graph+".set_ylabel('"+text_label+"')\n";
+  return code;
+};
+
+python.pythonGenerator.forBlock['scatterplot'] = function(block, generator) {
+  var value_data = generator.valueToCode(block, 'DATA', python.Order.ATOMIC);
+  var text_xaxis = block.getFieldValue('XAXIS');
+  var text_yaxis = block.getFieldValue('YAXIS');
+  var code = "sns.scatterplot("+value_data+", x='"+text_xaxis+"', y='"+text_yaxis+"')";
+  return [code, python.Order.ATOMIC];
+};
+
+python.pythonGenerator.forBlock['histplot'] = function(block, generator) {
+  var value_data = generator.valueToCode(block, 'DATA', python.Order.ATOMIC);
+  var text_xaxis = block.getFieldValue('XAXIS');
+  var text_hue = block.getFieldValue('HUE');
+  var code = "sns.histplot("+value_data+", x='"+text_xaxis+"', hue='"+text_hue+"')";
+  return [code, python.Order.ATOMIC];
+};
+
+python.pythonGenerator.forBlock['countplot'] = function(block, generator) {
+  var value_data = generator.valueToCode(block, 'DATA', python.Order.ATOMIC);
+  var text_xaxis = block.getFieldValue('XAXIS');
+  var code = "sns.countplot("+value_data+", x='"+text_xaxis+"')";
+  return [code, python.Order.ATOMIC];
+};
+
+python.pythonGenerator.forBlock['lineplot'] = function(block, generator) {
+  var value_data = generator.valueToCode(block, 'DATA', python.Order.ATOMIC);
+  var text_xaxis = block.getFieldValue('XAXIS');
+  var text_yaxis = block.getFieldValue('YAXIS');
+  var code = "sns.lineplot("+value_data+", x='"+text_xaxis+"', y='"+text_yaxis+"')";
+  return [code, python.Order.ATOMIC];
+};
+
+python.pythonGenerator.forBlock['regplot'] = function(block, generator) {
+  var value_data = generator.valueToCode(block, 'DATA', python.Order.ATOMIC);
+  var text_xaxis = block.getFieldValue('XAXIS');
+  var text_yaxis = block.getFieldValue('YAXIS');
+  var code = "sns.regplot("+value_data+", x='"+text_xaxis+"', y='"+text_yaxis+"')";
+  return [code, python.Order.ATOMIC];
+};
+
+python.pythonGenerator.forBlock['pairplot'] = function(block, generator) {
+  var value_data = generator.valueToCode(block, 'DATA', python.Order.ATOMIC);
+  var code = "sns.pairplot("+value_data+")";
+  return [code, python.Order.ATOMIC];
+};
+
+python.pythonGenerator.forBlock['plot'] = function(block, generator) {
+  var code = 'plt.show()\n';
   return code;
 };
 
@@ -481,6 +789,23 @@ document.addEventListener('DOMContentLoaded', function () {
             {"kind": "block", 'type': 'display'}
           ]
         },
+        {
+          "kind": "category",
+          "name": "Plotting",
+          "contents": [
+            {"kind": "block", 'type': 'import_seaborn'},
+            {"kind": "block", 'type': 'set_title'},
+            {"kind": "block", 'type': 'set_xlabel'},
+            {"kind": "block", 'type': 'set_ylabel'},
+            {"kind": "block", 'type': 'scatterplot'},
+            {"kind": "block", 'type': 'histplot'},
+            {"kind": "block", 'type': 'countplot'},
+            {"kind": "block", 'type': 'lineplot'},
+            {"kind": "block", 'type': 'regplot'},
+            {"kind": "block", 'type': 'pairplot'},
+            {"kind": "block", 'type': 'plot'}
+          ]
+        }
       ]
     };
 
