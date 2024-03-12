@@ -314,6 +314,123 @@ Blockly.defineBlocksWithJsonArray([
     "helpUrl": ""
   },
   {
+    "type": "df_tail",
+    "message0": "%1 .tail (%2)",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "DF"
+      },
+      {
+        "type": "field_number",
+        "name": "NUM",
+        "value": 0
+      }
+    ],
+    "inputsInline": true,
+    "output": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "select_columns",
+    "message0": "%1 [ %2 ]",
+    "args0": [
+      {
+        "type": "field_variable",
+        "name": "NAME",
+        "variable": "variable"
+      },
+      {
+        "type": "input_value",
+        "name": "NAME"
+      }
+    ],
+    "inputsInline": true,
+    "output": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "iloc",
+    "message0": "%1  . iloc [%2]",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "DATA"
+      },
+      {
+        "type": "input_value",
+        "name": "ROWS"
+      }
+    ],
+    "inputsInline": true,
+    "output": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "create_series",
+    "message0": "pd.Series (%1)",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "CONTENTS"
+      }
+    ],
+    "inputsInline": true,
+    "output": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "create_dataframe",
+    "message0": "pd.DataFrame(%1)",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "NAME"
+      }
+    ],
+    "inputsInline": true,
+    "output": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "column_equals",
+    "message0": "%1 [ %2 ] =  %3 %4",
+    "args0": [
+      {
+        "type": "field_variable",
+        "name": "DF",
+        "variable": "variable"
+      },
+      {
+        "type": "input_value",
+        "name": "COL"
+      },
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "input_value",
+        "name": "VALUE"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
     "type": "display",
     "message0": "display ( %1 )",
     "args0": [
@@ -629,6 +746,47 @@ python.pythonGenerator.forBlock['df_head'] = function(block, generator) {
   return [code, python.Order.ATOMIC];
 };
 
+python.pythonGenerator.forBlock['df_tail'] = function(block, generator) {
+  var value_df = generator.valueToCode(block, 'DF', python.Order.ATOMIC);
+  var number_num = block.getFieldValue('NUM');
+  var code = value_df+'.tail('+number_num+')';
+  return [code, python.Order.ATOMIC];
+};
+
+python.pythonGenerator.forBlock['select_columns'] = function(block, generator) {
+  var variable_name = generator.getVariableName(block.getFieldValue('NAME'));
+  var value_name = generator.valueToCode(block, 'NAME', python.Order.ATOMIC);
+  var code = variable_name+'['+value_name+']';
+  return [code, python.Order.ATOMIC];
+};
+
+python.pythonGenerator.forBlock['column_equals'] = function(block, generator) {
+  var variable_df = generator.getVariableName(block.getFieldValue('DF'));
+  var value_col = generator.valueToCode(block, 'COL', python.Order.ATOMIC);
+  var value_value = generator.valueToCode(block, 'VALUE', python.Order.ATOMIC);
+  var code = variable_df+'['+value_col+'] = '+value_value+'\n';
+  return code;
+};
+
+python.pythonGenerator.forBlock['iloc'] = function(block, generator) {
+  var value_data = generator.valueToCode(block, 'DATA', python.Order.ATOMIC);
+  var value_rows = generator.valueToCode(block, 'ROWS', python.Order.ATOMIC);
+  var code = value_data+'.iloc['+value_rows+']';
+  return [code, python.Order.ATOMIC];
+};
+
+python.pythonGenerator.forBlock['create_series'] = function(block, generator) {
+  var value_contents = generator.valueToCode(block, 'CONTENTS', python.Order.ATOMIC);
+  var code = 'pd.Series('+value_contents+')';
+  return [code, python.Order.ATOMIC];
+};
+
+python.pythonGenerator.forBlock['create_dataframe'] = function(block, generator) {
+  var value_name = generator.valueToCode(block, 'NAME', python.Order.ATOMIC);
+  var code = 'pd.DataFrame('+value_name+')';
+  return [code, python.Order.ATOMIC];
+};
+
 python.pythonGenerator.forBlock['display'] = function(block, generator) {
   var value_name = generator.valueToCode(block, 'NAME', python.Order.ATOMIC);
   var code = ("display("+value_name+")\n");
@@ -785,8 +943,20 @@ document.addEventListener('DOMContentLoaded', function () {
             {"kind": "block", 'type': 'import_pandas'},
             {"kind": "block", 'type': 'import_data'},
             {"kind": "block", 'type': 'dataset'},
-            {"kind": "block", 'type': 'df_head'},
             {"kind": "block", 'type': 'display'}
+          ]
+        },
+        {
+          "kind": "category",
+          "name": "DataFrames",
+          "contents": [
+            {"kind": "block", 'type': 'df_head'},
+            {"kind": "block", 'type': 'df_tail'},
+            {"kind": "block", 'type': 'select_columns'},
+            {"kind": "block", 'type': 'column_equals'},
+            {"kind": "block", 'type': 'iloc'},
+            {"kind": "block", 'type': 'create_series'},
+            {"kind": "block", 'type': 'create_dataframe'}
           ]
         },
         {
