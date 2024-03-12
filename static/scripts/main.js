@@ -979,12 +979,31 @@ document.addEventListener('DOMContentLoaded', function () {
       ]
     };
 
-
-  // Load Blockly
   var workspace = Blockly.inject('blocklyDiv', {
       toolbox: toolbox,
       trashcan: true
   });
+
+  const savedWorkspaceState = localStorage.getItem('state');
+  if(savedWorkspaceState){
+    const state = JSON.parse(savedWorkspaceState);
+    Blockly.serialization.workspaces.load(state, workspace);
+  }
+
+  //var state = Blockly.serialization.workspaces.save(workspace);
+
+  document.getElementById('saveWorkspace').addEventListener('click', function () {
+    state = Blockly.serialization.workspaces.save(workspace);
+    localStorage.setItem('state', JSON.stringify(state));
+  });
+
+  document.getElementById('loadWorkspace').addEventListener('click', function () {
+    const savedWorkspaceState = localStorage.getItem('state');
+    const state = JSON.parse(savedWorkspaceState);
+    Blockly.serialization.workspaces.load(state, workspace);
+  });
+   
+  
 
   document.getElementById('createVariableBtn').addEventListener('click', function () {
     Blockly.Variables.createVariableButtonHandler(workspace, null, 'panda')
@@ -997,7 +1016,8 @@ document.addEventListener('DOMContentLoaded', function () {
     
     // Display the translated Python code in the output box
     document.getElementById('pythonCode').textContent = pythonCode;
-
+    state = Blockly.serialization.workspaces.save(workspace);
+    localStorage.setItem('state', JSON.stringify(state));
   });
 
   function outf(text) { 
