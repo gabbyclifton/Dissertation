@@ -19,11 +19,16 @@
 </head>
 <body>
     <h1>*Cool App Name*</h1>
-    
-    <button id="createVariableBtn">Create Variable</button>
     <div class="grid-container">
         <div class="grid-child purple">
-            <div id="blocklyDiv"></div>
+            <div class="grid-child">
+                <button id="createVariableBtn">Create Variable</button>
+                <button id="loadWorkspace" style="float: right">Load Workspace</button>
+                <button id="saveWorkspace" style="float: right">Save Workspace</button>
+            </div>
+            <div class="grid-child">
+                <div id="blocklyDiv"></div>
+            </div>
         </div>
         <div class="grid-child green">
             <div id="codeBox">
@@ -33,37 +38,31 @@
                         <button id="generateCodeBtn" style="float: right; margin:20px">Generate Code</button>
                     </div>
                 </div>
-                <pre id="pythonCode" style="width: 95%; margin: auto; margin-top: 10px; height: 165px; background-color: lightgray"></pre>
+                <pre id="pythonCode" style="width: 95%; margin: auto; margin-top: 10px; height: 85%; background-color: lightgray; overflow-y: scroll; overflow-x: scroll;"></pre>
             </div>
-            <div id="outputBox" style="margin-top:20px">
-                <div class="grid-container" style="height: 40px">
-                    <h3 class="grid-child" style="margin-left:10px">Python Code Output:</h3>
-                    <div class="grid-child">
-                        <button id="runCodeBtn" style="float: right; margin:20px">Run Code</button>
-                    </div>
-                </div>
-                <pre id="codeOutput" style="width: 95%; margin: auto; margin-top: 10px; height: 165px; background-color: lightgray"></pre>
+            <div class="grid-child">
+                <button id="runCodeBtn" style="float: right; margin:10px">Run Code in Terminal (for print outputs only)</button>
+                <form id="myForm" action="/runCode" method="post">
+                    <label for="code"></label>
+                    <input type='hidden' id= 'code' name='code' value='' />
+                </form>
+                <button onclick="mySubmit()" style="float: left; margin:10px">Generate Dataframe</button>
+                <button onclick="mySubmit()" style="float: left; margin:10px">Generate Graph</button>
+                <script> 
+                    function mySubmit() {
+                       pythonCode = document.getElementById('pythonCode').innerText;
+                       document.getElementById('code').value = pythonCode;
+                       document.getElementById("myForm").submit();
+                    }
+                </script>  
             </div>
         </div>
     </div> 
-
-    <form id="myForm" action="/runCode" method="post">
-        <label for="code"></label>
-        <!--<input type="text" id="code" name="code"><br><br>-->
-        <input type='hidden' id= 'code' name='code' value='' />
-    </form>
-    <button onclick="mySubmit()">Submit</button>
-    <script> 
-        function mySubmit() {
-           //pythonCode = "import matplotlib.pyplot as plt\nfig, ax = plt.subplots()\nyear_2 = [2016, 2017, 2018, 2019, 2020, 2021]\npopulation_2 = [43, 43, 44, 44, 45, 45]\nplt.plot(year_2, population_2)\nplt.show()\nprint('Python script in pyscript end here ')";
-           //pythonCode = "import pandas as pd\nfrom pyodide.http import open_url\nfrom pyscript import display\nurl='https://raw.githubusercontent.com/datasets/airport-codes/master/data/airport-codes.csv'\ndf = pd.read_csv(open_url(url))\ndisplay(df)";
-           //pythonCode = "import pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nfrom pyscript import display\nfrom pyodide.http import open_url\nurl='https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv'\ntips = (pd.read_csv(open_url(url))).head()\nax = sns.countplot(data=tips,x='iso_country')\nax.set_title('Airports')\nax.set_xlabel('Countries')\nax.set_ylabel('Frequency')\nplt.show()"
-           pythonCode = document.getElementById('pythonCode').innerText;
-           document.getElementById('code').value = pythonCode;
-           document.getElementById("myForm").submit();
-         }
-    </script>
-    <button id="saveWorkspace">Save</button>
-    <button id="loadWorkspace">Load</button>
+    <div id="outputBox" style="margin-top:20px">
+        <div class="grid-container" style="height: 40px">
+            <h3 class="grid-child" style="margin-left:10px">Terminal:</h3>
+        </div>
+        <pre id="codeOutput" style="width: 95%; margin: auto; margin-top: 10px; height: 165px; background-color: lightgray; overflow-y: scroll; overflow-x: scroll;"></pre>
+    </div>
 </body>
 </html>

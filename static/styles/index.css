@@ -14,10 +14,10 @@
 }
 
 #codeBox {
-    height: 227px;
+    height: 90%;
     width: 100%;
     border: 1px solid lightgray;
-    border-radius: 5px;
+    border-radius: 5px;    
 }
 #outputBox {
     height: 227px;

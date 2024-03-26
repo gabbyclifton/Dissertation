@@ -9,12 +9,6 @@ def home():
 
 @app.route('/runCode', methods=['POST'])
 def runCode():
-    # Get form inputs
-    #code = request.form.get('code')
-    # Process the inputs and prepare data for the second page (popup)
-    #code_to_run = {
-    #    'code': code,
-    #}
     code = request.form.get('code')
     code_to_run = {'code': code,}
     # Render the second page (popup) with the processed data

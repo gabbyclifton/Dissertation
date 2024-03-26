@@ -18,8 +18,7 @@ Blockly.defineBlocksWithJsonArray([
     "previousStatement": null,
     "nextStatement": null,
     "colour": 330,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "Use this block to assign a value to a variable"
   },
   {
     "type": "variables_get",
@@ -32,7 +31,8 @@ Blockly.defineBlocksWithJsonArray([
       }
     ],
     "output": null,
-    "colour": 330
+    "colour": 330,
+    "tooltip": "Used to reference a variable anywhere in your program"
   },
   {
     "type": "print",
@@ -47,8 +47,7 @@ Blockly.defineBlocksWithJsonArray([
     "previousStatement": null,
     "nextStatement": null,
     "colour": 20,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "This block will output its contents to the terminal"
   },
   {
     "type": "string_concat",
@@ -68,8 +67,7 @@ Blockly.defineBlocksWithJsonArray([
     "inputsInline": true,
     "output": null,
     "colour": 230,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "Make a sentence by combining multiple strings together"
   },
   {
     'type': 'controls_if',
@@ -116,8 +114,7 @@ Blockly.defineBlocksWithJsonArray([
     "inputsInline": true,
     "output": null,
     "colour": 230,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "Create a list of 3 elements of any data type"
   },
   {
     "type": "index_list",
@@ -136,8 +133,7 @@ Blockly.defineBlocksWithJsonArray([
     "inputsInline": true,
     "output": null,
     "colour": 230,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "myList[0] will get the 1st element in the list 'myList', myList[1] the 2nd element, and so on"
   },
   {
     'type': 'lists_create_empty',
@@ -259,16 +255,14 @@ Blockly.defineBlocksWithJsonArray([
     "inputsInline": true,
     "output": null,
     "colour": 120,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "Calculates the range between a minimum and maximum value"
   },
   {
     "type": "import_pandas",
     "message0": "import pandas libraries",
     "nextStatement": null,
     "colour": 230,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "Imports the revelvant libraries needed to use pandas"
   },
   {
     "type": "import_data",
@@ -282,16 +276,15 @@ Blockly.defineBlocksWithJsonArray([
     "inputsInline": true,
     "output": null,
     "colour": 230,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "Used to read the URL of a dataset in the form of a csv file.  Assign this to a variable"
   },
   {
     "type": "dataset",
     "message0": "dataset",
     "output": null,
     "colour": 230,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "This is the URL of an example dataset, https://github.com/mwaskom/seaborn-data/blob/master/tips.csv",
+    "helpUrl": "https://github.com/mwaskom/seaborn-data/blob/master/tips.csv"
   },
   {
     "type": "df_head",
@@ -310,8 +303,7 @@ Blockly.defineBlocksWithJsonArray([
     "inputsInline": true,
     "output": null,
     "colour": 230,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "df.head(5) will return the top 5 rows of the dataframe 'df'"
   },
   {
     "type": "df_tail",
@@ -330,8 +322,7 @@ Blockly.defineBlocksWithJsonArray([
     "inputsInline": true,
     "output": null,
     "colour": 230,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "df.tail(5) will return the last 5 rows of the dataframe 'df'"
   },
   {
     "type": "select_columns",
@@ -350,8 +341,7 @@ Blockly.defineBlocksWithJsonArray([
     "inputsInline": true,
     "output": null,
     "colour": 230,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "df['column1'] will return just the column named 'column1' from the dataframe 'df'. Multiple columns can be returned if a list of column names is used."
   },
   {
     "type": "iloc",
@@ -369,8 +359,7 @@ Blockly.defineBlocksWithJsonArray([
     "inputsInline": true,
     "output": null,
     "colour": 230,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "df.iloc[50] will return just row number 50 of the dataframe 'df'"
   },
   {
     "type": "create_series",
@@ -384,8 +373,7 @@ Blockly.defineBlocksWithJsonArray([
     "inputsInline": true,
     "output": null,
     "colour": 230,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "This block will create a 'series' containing the list of input values.  Assign to a variable"
   },
   {
     "type": "create_dataframe",
@@ -399,8 +387,7 @@ Blockly.defineBlocksWithJsonArray([
     "inputsInline": true,
     "output": null,
     "colour": 230,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "This block will create a dataframe with the column names input as a list.  Assign to a variable"
   },
   {
     "type": "column_equals",
@@ -427,8 +414,62 @@ Blockly.defineBlocksWithJsonArray([
     "previousStatement": null,
     "nextStatement": null,
     "colour": 230,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "df['column1'] = mySeries will set the contents of 'column1' in the dataframe 'df' equal to the series 'mySeries'"
+  },
+  {
+    "type": "group_by",
+    "message0": "%1 .groupby ( %2 ) [%3]",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "DF"
+      },
+      {
+        "type": "input_value",
+        "name": "GROUP"
+      },
+      {
+        "type": "input_value",
+        "name": "COLUMN"
+      }
+    ],
+    "inputsInline": true,
+    "output": null,
+    "colour": 230,
+    "tooltip": "df.groupby('column1')['column2', 'column3'] will group the data in dataframe 'df' by the data in 'column1', and will display the average of columns 2 and 3"
+  },
+  {
+    "type": "sort_values",
+    "message0": "%1 .sort_values ( by = ' %2 ', ascending =  %3)",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "DF"
+      },
+      {
+        "type": "field_input",
+        "name": "COLUMN",
+        "text": "column"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "ASC",
+        "options": [
+          [
+            "True",
+            "True"
+          ],
+          [
+            "False",
+            "False"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "output": null,
+    "colour": 230,
+    "tooltip": "df.sort_values(by='column1', ascending=True) will sort the data in dataframe 'df' by the values in 'column1', in ascending order"
   },
   {
     "type": "display",
@@ -443,8 +484,7 @@ Blockly.defineBlocksWithJsonArray([
     "previousStatement": null,
     "nextStatement": null,
     "colour": 230,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "display(df) will display the dataframe 'df' on the screen"
   },
   {
     "type": "import_seaborn",
@@ -452,8 +492,7 @@ Blockly.defineBlocksWithJsonArray([
     "previousStatement": null,
     "nextStatement": null,
     "colour": 290,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "Imports the relevant libraries for plotting graphs.  Make sure to also import pandas library if necessary"
   },
   {
     "type": "set_title",
@@ -473,8 +512,7 @@ Blockly.defineBlocksWithJsonArray([
     "previousStatement": null,
     "nextStatement": null,
     "colour": 290,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "myGraph.set_title('Title') creates a label for the title of 'myGraph'"
   },
   {
     "type": "set_xlabel",
@@ -494,8 +532,7 @@ Blockly.defineBlocksWithJsonArray([
     "previousStatement": null,
     "nextStatement": null,
     "colour": 290,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "myGraph.set_xlabel('X-axis') creates a label for the x-axis of 'myGraph'"
   },
   {
     "type": "set_ylabel",
@@ -515,8 +552,7 @@ Blockly.defineBlocksWithJsonArray([
     "previousStatement": null,
     "nextStatement": null,
     "colour": 290,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "myGraph.set_ylabel('Y-axis') creates a label for the y-axis of 'myGraph'"
   },
   {
     "type": "scatterplot",
@@ -543,8 +579,7 @@ Blockly.defineBlocksWithJsonArray([
     "inputsInline": true,
     "output": null,
     "colour": 290,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "sns.scatterplot( df, x = 'column1', y = 'column2') plots a scattergraph of the data in dataframe 'df', plotting 'column1' against 'column2'"
   },
   {
     "type": "histplot",
@@ -675,8 +710,7 @@ Blockly.defineBlocksWithJsonArray([
     ],
     "previousStatement": null,
     "colour": 290,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "This block is necessary to output the graph you have plotted onto the screen"
   }
 ]);
 
@@ -784,6 +818,22 @@ python.pythonGenerator.forBlock['create_series'] = function(block, generator) {
 python.pythonGenerator.forBlock['create_dataframe'] = function(block, generator) {
   var value_name = generator.valueToCode(block, 'NAME', python.Order.ATOMIC);
   var code = 'pd.DataFrame('+value_name+')';
+  return [code, python.Order.ATOMIC];
+};
+
+python.pythonGenerator.forBlock['group_by'] = function(block, generator) {
+  var value_df = generator.valueToCode(block, 'DF', python.Order.ATOMIC);
+  var value_group = generator.valueToCode(block, 'GROUP', python.Order.ATOMIC);
+  var value_column = generator.valueToCode(block, 'COLUMN', python.Order.ATOMIC);
+  var code = value_df+'.groupby('+value_group+')['+value_column+'].mean().reset_index()';
+  return [code, python.Order.ATOMIC];
+};
+
+python.pythonGenerator.forBlock['sort_values'] = function(block, generator) {
+  var value_df = generator.valueToCode(block, 'DF', python.Order.ATOMIC);
+  var text_column = block.getFieldValue('COLUMN');
+  var dropdown_asc = block.getFieldValue('ASC');
+  var code = value_df+'.sort_values(by="'+text_column+'", ascending='+dropdown_asc+')';
   return [code, python.Order.ATOMIC];
 };
 
@@ -955,6 +1005,8 @@ document.addEventListener('DOMContentLoaded', function () {
             {"kind": "block", 'type': 'select_columns'},
             {"kind": "block", 'type': 'column_equals'},
             {"kind": "block", 'type': 'iloc'},
+            {"kind": "block", 'type': 'group_by'},
+            {"kind": "block", 'type': 'sort_values'},
             {"kind": "block", 'type': 'create_series'},
             {"kind": "block", 'type': 'create_dataframe'}
           ]
